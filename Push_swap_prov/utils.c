@@ -1,0 +1,89 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jverdier <jverdier@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/10 13:10:11 by jverdier          #+#    #+#             */
+/*   Updated: 2024/08/07 11:23:07 by jverdier         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+int	position(t_lst *begin_list, int content)
+{
+	int	pos;
+
+	pos = 0;
+	while (begin_list != NULL && begin_list->content != content)
+	{
+		pos++;
+		begin_list = begin_list->next;
+	}
+	return (pos);
+}
+
+int	cost(t_lst *begin_list, t_lst *post)
+{
+	int	cost;
+
+	cost = 0;
+	while (post != NULL && position(begin_list, post->content) != 0)
+	{
+		if (position(begin_list, post->content) >= (lstsize(begin_list) / 2))
+		{
+			cost++;
+			post = post->next;
+		}
+		else
+		{
+			cost++;
+			post = post->before;
+		}
+	}
+	return (cost);
+}
+
+void	put_cost_b(t_lst *begin_list_a, t_lst **begin_list_b)
+{
+	t_lst	*smaller;
+	t_lst	*now;
+
+	now = *begin_list_b;
+	while (now != NULL)
+	{
+		smaller = srch_closest_smaller(begin_list_a, now);
+		now->push_cost = cost(begin_list_a, smaller) + cost(*begin_list_b, now);
+		now = now->next;
+	}
+	return ;
+}
+
+void	put_cost_a(t_lst **begin_list_a, t_lst *begin_list_b)
+{
+	t_lst	*bigger;
+	t_lst	*now;
+
+	now = *begin_list_a;
+	while (now != NULL)
+	{
+		bigger = srch_closest_bigger(begin_list_b, now);
+		now->push_cost = cost(*begin_list_a, now) + cost(begin_list_b, bigger);
+		now = now->next;
+	}
+	return ;
+}
+
+void	put_num_first(t_lst **begin_list, t_lst *num)
+{
+	while (position(*begin_list, num->content) != 0)
+	{
+		if (position(*begin_list, num->content) >= (lstsize(*begin_list) / 2))
+			rra(begin_list);
+		else
+			ra(begin_list);
+	}
+	return ;
+}
