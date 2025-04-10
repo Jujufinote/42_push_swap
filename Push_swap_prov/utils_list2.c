@@ -1,16 +1,16 @@
 /* ************************************************************************** */
-/*																			*/
-/*														:::	  ::::::::   */
-/*   utils_list2.c									  :+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: jverdier <jverdier@student.42.fr>		  +#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/07/29 10:35:20 by jverdier		  #+#	#+#			 */
-/*   Updated: 2024/07/29 10:40:16 by jverdier		 ###   ########.fr	   */
-/*																			*/
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_list2.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jverdier <jverdier@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/13 11:15:38 by jverdier          #+#    #+#             */
+/*   Updated: 2024/08/18 13:28:55 by jverdier         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 void	printlst(t_lst **begin_list_a)
 {
@@ -22,7 +22,7 @@ void	printlst(t_lst **begin_list_a)
 	ft_printf("\n");
 	while (b_list != NULL)
 	{
-		ft_printf("now : %x, before : %x\ncontent : %d\npush cost : %d\nafter : %x, now : %x\n\n", b_list, b_list->before, b_list->content, b_list->push_cost, b_list->next, b_list);
+		ft_printf("content : %d\n", b_list->content);
 		b_list = b_list->next;
 	}
 	return ;
@@ -34,11 +34,13 @@ t_lst	**create_list(char **argv)
 	t_lst	**begin_list_a;
 	t_lst	*new;
 
-	i = 2;
+	if (argv == NULL)
+		return (NULL);
+	i = 1;
 	begin_list_a = (t_lst **)malloc(sizeof(t_lst *));
 	if (begin_list_a == NULL)
 		return (NULL);
-	*begin_list_a = lstnew(ft_atoi(argv[1]));
+	*begin_list_a = lstnew(ft_atoi(argv[0]));
 	while (*begin_list_a != NULL && argv[i] != NULL)
 	{
 		new = lstnew(ft_atoi(argv[i]));
@@ -50,13 +52,14 @@ t_lst	**create_list(char **argv)
 		lstadd_back(begin_list_a, new);
 		i++;
 	}
+	ft_free(argv);
 	return (begin_list_a);
 }
 
 void	lstclear(t_lst **lst)
 {
-	t_lst  *temp;
-	t_lst  *before;
+	t_lst	*temp;
+	t_lst	*before;
 
 	if (lst == NULL)
 		return ;

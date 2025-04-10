@@ -6,7 +6,7 @@
 /*   By: jverdier <jverdier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 13:02:46 by jverdier          #+#    #+#             */
-/*   Updated: 2024/08/07 11:34:04 by jverdier         ###   ########.fr       */
+/*   Updated: 2024/08/18 15:37:14 by jverdier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ typedef struct s_lst
 }						t_lst;
 
 /*main.c*/
-int		main(int argc, char **argv);
+int		*create_tab(t_lst **begin_list_a);
+int		distribution(t_lst **begin_list_a, t_lst **begin_list_b);
 
 /*parsing.c*/
 int		is_valid(char *arg);
@@ -38,10 +39,18 @@ int		is_double(char **argv);
 int		verif_param(char **argv);
 int		is_sorted(t_lst *begin_list);
 
+/*cleaning.c*/
+int		ft_count(char const *s, char c);
+int		finding_args(char **argv, char **args, int i, int l);
+char	**cleaning(char **argv);
+void	ft_free(char **array);
+
 /*algorithm.c*/
+int		is_swap(t_lst *begin_list_a, t_lst *min, t_lst *max);
 void	small(t_lst **begin_list_a);
 void	medium(t_lst **begin_list_a, t_lst **begin_list_b);
-void	large(t_lst **begin_list_a, t_lst **begin_list_b);
+void	large(t_lst **begin_list_a, t_lst **begin_list_b, int *tab, int size);
+void	end_sort(t_lst **begin_list_a, t_lst **begin_list_b);
 
 /*search.c*/
 t_lst	*search_min(t_lst *begin_list);
@@ -50,24 +59,29 @@ t_lst	*srch_closest_bigger(t_lst *begin_list, t_lst *num);
 t_lst	*srch_closest_smaller(t_lst *begin_list, t_lst *num);
 t_lst	*who_put(t_lst *begin_list);
 
-/*utils.c*/
-int		position(t_lst *begin_list, int content);
+/*cost.c*/
 int		cost(t_lst *begin_list, t_lst *post);
 void	put_cost_a(t_lst **begin_list_a, t_lst *begin_list_b);
 void	put_cost_b(t_lst *begin_list_a, t_lst **begin_list_b);
-void	put_num_first(t_lst **begin_list, t_lst *num);
+
+/*utils.c*/
+int		pos(t_lst *begin_list, int content);
+void	put_num_first_a(t_lst **begin_list, t_lst *num);
+void	put_num_first_b(t_lst **begin_list, t_lst *num);
+void	put_num_first(t_lst **b_a, t_lst **b_b, t_lst *numa, t_lst *numb);
+void	bubble(int *tab, int size);
 
 /*utils_list2.c*/
 void	printlst(t_lst **begin_list_a);
 t_lst	**create_list(char **argv);
-void    lstclear(t_lst **lst);
+void	lstclear(t_lst **lst);
 
 /*utils_list.c*/
-void    lstadd_front(t_lst **lst, t_lst *new);
-void    lstadd_back(t_lst **lst, t_lst *new);
-t_lst  *lstnew(int content);
-int     lstsize(t_lst *lst);
-t_lst  *lstlast(t_lst *lst);
+void	lstadd_front(t_lst **lst, t_lst *new);
+void	lstadd_back(t_lst **lst, t_lst *new);
+t_lst	*lstnew(int content);
+int		lstsize(t_lst *lst);
+t_lst	*lstlast(t_lst *lst);
 
 /*s_.c*/
 void	swap(int *a, int *b);

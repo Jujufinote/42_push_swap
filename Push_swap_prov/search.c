@@ -6,7 +6,7 @@
 /*   By: jverdier <jverdier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 13:38:23 by jverdier          #+#    #+#             */
-/*   Updated: 2024/08/09 12:36:05 by jverdier         ###   ########.fr       */
+/*   Updated: 2024/08/18 12:05:04 by jverdier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,17 @@ t_lst	*srch_closest_bigger(t_lst *begin_list, t_lst *num)
 	bigger = b_list;
 	while (b_list != NULL)
 	{
-		if (b_list->content > num->content && bigger->content > b_list->content)
+		if (b_list->content > num->content \
+		&& bigger->content > b_list->content)
 			bigger = b_list;
 		b_list = b_list->next;
 	}
 	if (bigger == NULL)
 		bigger = search_min(begin_list);
+	if (bigger->next == NULL)
+		return (begin_list);
+	else
+		bigger = bigger->next;
 	return (bigger);
 }
 
@@ -71,19 +76,24 @@ t_lst	*srch_closest_smaller(t_lst *begin_list, t_lst *num)
 	smaller = b_list;
 	while (b_list != NULL)
 	{
-		if (b_list->content < num->content && smaller->content < b_list->content)
+		if (b_list->content < num->content \
+		&& smaller->content < b_list->content)
 			smaller = b_list;
 		b_list = b_list->next;
 	}
 	if (smaller == NULL)
 		smaller = search_max(begin_list);
+	if (smaller->next == NULL)
+		return (begin_list);
+	else
+		smaller = smaller->next;
 	return (smaller);
 }
 
 t_lst	*who_put(t_lst *begin_list)
 {
 	t_lst	*result;
-	
+
 	result = begin_list;
 	while (begin_list != NULL)
 	{

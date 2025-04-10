@@ -6,11 +6,11 @@
 /*   By: jverdier <jverdier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 13:10:21 by jverdier          #+#    #+#             */
-/*   Updated: 2024/07/29 17:14:44 by jverdier         ###   ########.fr       */
+/*   Updated: 2024/08/13 11:34:13 by jverdier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 void	pa(t_lst **begin_list_a, t_lst **begin_list_b)
 {
@@ -31,7 +31,6 @@ void	pa(t_lst **begin_list_a, t_lst **begin_list_b)
 	lstadd_front(begin_list_a, node);
 	if (size == 1)
 		*begin_list_b = NULL;
-	ft_printf("pa\n");
 	return ;
 }
 
@@ -39,14 +38,20 @@ void	pb(t_lst **begin_list_a, t_lst **begin_list_b)
 {
 	t_lst	*b_list_a;
 	t_lst	*node;
+	int		size;
 
-	b_list_a = *begin_list_a;
-	node = b_list_a;
-	b_list_a = b_list_a->next;
-	*begin_list_a = b_list_a;
-	b_list_a->before = NULL;
+	node = *begin_list_a;
+	size = lstsize(*begin_list_a);
+	if (size > 1)
+	{
+		b_list_a = *begin_list_a;
+		b_list_a = b_list_a->next;
+		*begin_list_a = b_list_a;
+		b_list_a->before = NULL;
+	}
 	node->next = NULL;
 	lstadd_front(begin_list_b, node);
-	ft_printf("pb\n");
+	if (size == 1)
+		*begin_list_a = NULL;
 	return ;
 }

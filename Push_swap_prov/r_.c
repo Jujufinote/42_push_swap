@@ -6,17 +6,17 @@
 /*   By: jverdier <jverdier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 13:10:35 by jverdier          #+#    #+#             */
-/*   Updated: 2024/07/29 13:48:34 by jverdier         ###   ########.fr       */
+/*   Updated: 2024/08/18 11:19:22 by jverdier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 void	ra(t_lst **begin_list)
 {
 	t_lst	*b_list;
 	t_lst	*node;
-	
+
 	b_list = *begin_list;
 	node = b_list;
 	b_list = b_list->next;
@@ -24,7 +24,6 @@ void	ra(t_lst **begin_list)
 	*begin_list = b_list;
 	node->next = NULL;
 	lstadd_back(begin_list, node);
-	ft_printf("ra\n");
 	return ;
 }
 
@@ -32,7 +31,7 @@ void	rb(t_lst **begin_list)
 {
 	t_lst	*b_list;
 	t_lst	*node;
-	
+
 	b_list = *begin_list;
 	node = b_list;
 	b_list = b_list->next;
@@ -40,7 +39,6 @@ void	rb(t_lst **begin_list)
 	*begin_list = b_list;
 	node->next = NULL;
 	lstadd_back(begin_list, node);
-	ft_printf("rb\n");
 	return ;
 }
 
