@@ -1,4 +1,4 @@
-![push_swap](https://github.com/Jujufinote/42-project-badges/blob/main/covers/cover-push_swap.png)
+![push_swap](https://github.com/Jujufinote/42-project-badges/blob/main/covers/cover-push_swap-bonus.png)
 <br>
 <br>
 
