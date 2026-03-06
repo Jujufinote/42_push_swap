@@ -3,17 +3,17 @@
 <br>
 
 ## Preface
-_waiting for update_
+The first sorting algorithm required of 42school.
 <br>
 <br>
 
 ## 📜 Mandatory part
-_waiting for update_
+Sort a list of integers with limited authorized movements and only 2 stacks.
 <br>
 <br>
 
 ## ✅ Bonus part
-_waiting for update_
+Write an algorithm allowing to check if the result sent by push swap is right.
 <br>
 <br>
 <br>
@@ -21,22 +21,13 @@ _waiting for update_
 ---
 
 ## ⚙️ How to use step by step :
-_waiting for update_
-<br>
-<br>
 
 >[!WARNING]
 > Do NOT COPY my work my work without thinking and understanding it (we call that cheating) and you don't want that, neither have -42 correcting points (if you're at a 42school).
 > <br> PLEASE LEARN AND MAKE YOUR OWN
-<br>
 
 ### Step 1 :
 _waiting for update_
 <br>
 <br>
 <br>
-
----
-
-## 🗒️ Function list
-_waiting for update_
