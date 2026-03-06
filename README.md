@@ -23,7 +23,7 @@ Write an algorithm allowing to check if the result sent by push swap is right.
 ## ⚙️ How to use step by step :
 
 >[!WARNING]
-> Do NOT COPY my work my work without thinking and understanding it (we call that cheating) and you don't want that <br>
+> Do NOT COPY my work my work without thinking and understanding it, we call that cheating and you don't want that <br>
 > PLEASE LEARN AND MAKE YOUR OWN
 
 ### Step 1 :
